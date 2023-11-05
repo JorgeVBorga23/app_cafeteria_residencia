@@ -1,0 +1,30 @@
+.tarjetaCategoria {
+  width: 18rem;
+  height: 8rem;
+  border: solid 4px;
+  border-color: chocolate;
+  border-radius: 50px;
+}
+.tarjetaCategoria:hover{
+  background-color: gray;
+  cursor: pointer;
+
+}
+
+.tarjetaCategoria h3 {
+  text-align: center;
+}
+
+.grid-categorias {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.tarjetaProducto {
+  width: 25rem;
+  height: 10rem;
+  border: solid 4px;
+  border-color: chocolate;
+}
+
