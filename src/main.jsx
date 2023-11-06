@@ -6,25 +6,26 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import DetalleCategoria from './restaurante/DetalleCategoria.jsx'
 
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>
+    element: <App />
   },
   {
-    path: "/login",
-    element: <Login/>
+    path: "/login", 
+    element: <Login />
   },
   {
     path: "/categoria/:id",
-    element: <DetalleCategoria/>
+    element: <DetalleCategoria />
   }
-
 ])
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+   <RouterProvider router={router} />
   </React.StrictMode>,
 )
+

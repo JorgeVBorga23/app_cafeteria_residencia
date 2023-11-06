@@ -1,8 +1,9 @@
 import "./App.css";
 import Navegacion from "./restaurante/Navegacion";
 import Carrusel from "./restaurante/Carrusel";
-import CarruselPromociones from "./restaurante/CarruselPromociones"
+import CarruselPromociones from "./restaurante/CarruselPromociones";
 import Categorias from "./restaurante/Categorias";
+
 function App() {
   return (
     <>
@@ -11,15 +12,14 @@ function App() {
         <div className="row">
           <div className="col-md 6">
             <Carrusel />
-            <CarruselPromociones/>
+            <CarruselPromociones />
           </div>
           <div className="col-md 6">
-            <Categorias/>
+            <Categorias />
           </div>
         </div>
       </div>
-    </>
-  );
+    </>)
 }
 
 export default App;

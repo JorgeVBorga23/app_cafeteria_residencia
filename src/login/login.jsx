@@ -1,45 +1,80 @@
-function Login() {
+import React, { useState } from 'react';
+import Navegacion from "../restaurante/Navegacion"
+import { redirect } from "react-router-dom";
+
+const Login = () => {
+  const [usuario, setUsuario] = useState('');
+  const [password, setPassword] = useState('');
+  const [responseMessage, setResponseMessage] = useState('');
+  const [error, setError] = useState(null);
+
+  const handleUsuarioChange = (e) => {
+    setUsuario(e.target.value);
+  }
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  }
+
+  const handleLogin = (e) => {
+    // Preparar los datos para enviar en el cuerpo de la solicitud
+    e.preventDefault()
+    const data = {
+      username: usuario,
+      password: password
+    };
+
+    // Realizar la solicitud POST a tu API
+    fetch('http://localhost:3001/usuarios/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Manejar la respuesta de la API
+      if (data.success) {
+        // Iniciar sesión exitosamente, redirigir o mostrar un mensaje de éxito
+        setResponseMessage('Inicio de sesión exitoso');
+        return redirect("/admin");
+
+      } else {
+        // Mostrar un mensaje de error
+        setError('Error al iniciar sesión. Verifica tus credenciales.');
+      }
+    })
+    .catch(error => {
+      console.error('Error de red:', error);
+      setError('Error de red. Inténtalo de nuevo más tarde.');
+    });
+  }
+
   return (
     <>
-      <br />
-      <div className="container">
-        <h1 className="text-center">Iniciar Sesion</h1>
-
-        <div className="card container col-sm-8">
-          <form action="" className="form">
-            <div className="mb-3">
-              <label className="form-label" htmlFor="usuario">
-                Nombre de usuario:
-                <input
-                  className="form-control"
-                  type="text"
-                  id="usuario"
-                  placeholder="Ingrese su nombre de usuario"
-                />
-              </label>
-            </div>
-            <div className="mb-3">
-              <label className="form-label" htmlFor="password">
-                Contraseña
-                <input
-                  className="form-control"
-                  type="password"
-                  placeholder="Ingrese su contraseña"
-                />
-              </label>
-            </div>
-
-            <div className="mb-3">
-              <input
-                className="btn btn-success form-control mb-3"
-                type="submit"
-                value="Ingresar"
-              />
-            </div>
-          </form>
-        </div>
+    <Navegacion/>
+    <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
+      <div className="col-md-6">
+        <h2>Iniciar Sesión</h2>
+        {error && <div className="alert alert-danger">{error}</div>}
+        {responseMessage && <div className="alert alert-success">{responseMessage}</div>}
+        <form onSubmit={handleLogin}>
+          <div className="mb-3">
+            <label htmlFor="usuario" className="form-label">Usuario</label>
+            <input required type="text" className="form-control" id="usuario" value={usuario} onChange={handleUsuarioChange}  />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">Contraseña</label>
+            <input type="password" className="form-control" id="password" value={password} onChange={handlePasswordChange}  />
+          </div>
+          <button type="submit" className="btn btn-primary" >Iniciar Sesión</button>
+        </form>
       </div>
+    </div>
     </>
+    
   );
 }
+
 export default Login;
