@@ -3,7 +3,7 @@ import "./restaurante.css";
 
 
 function ItemProducto(props) {
-  let url_api = "http://localhost:3000/carrito/guardar";
+  let url_api = "http://localhost:3001/carrito/guardar";
   let añadirProducto = async (url, data) => {
     const response = await fetch(url, {
       method: "POST",

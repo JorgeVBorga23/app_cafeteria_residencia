@@ -5,7 +5,7 @@ function Categorias() {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/categoria")
+    fetch("http://localhost:3001/categoria")
       .then((respuesta) => respuesta.json())
       .then((datos) => {
         setCategorias(datos);
@@ -14,7 +14,7 @@ function Categorias() {
   }, []);
 
   const tarjeta = {
-    "text-decoration": "none",
+    textDecoration: "none",
     color: "black",
   };
   return (
@@ -26,7 +26,7 @@ function Categorias() {
         <div className="grid-categorias">
           {categorias.map((cat) => {
             return (
-              <a style={tarjeta} href={"/categoria/" + cat.id}>
+              <a key={cat.id} style={tarjeta} href={"/categoria/" + cat.id}>
                 <ItemCategoria
                   className="col-1"
                   id={cat.id}

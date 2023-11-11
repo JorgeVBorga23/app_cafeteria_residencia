@@ -7,7 +7,7 @@ function DetalleCategoria() {
     const [productos, setProductos] = useState([])
     useEffect(()=>{
         
-            fetch("http://localhost:3000/categoria/lista-productos/"+id)
+            fetch("http://localhost:3001/categoria/lista-productos/"+id)
               .then((respuesta) => respuesta.json())
               .then((datos) => {
                 console.log(datos)

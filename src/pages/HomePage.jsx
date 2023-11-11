@@ -1,12 +1,12 @@
 
-import Navegacion from "./Navegacion";
-import Carrusel from "./Carrusel";
-import CarruselPromociones from "./CarruselPromociones";
-import Categorias from "./Categorias";
+import Navegacion from "../components/restaurante/Navegacion";
+import Carrusel from "../components/restaurante/Carrusel";
+import CarruselPromociones from "../components/restaurante/CarruselPromociones";
+import Categorias from "../components/restaurante/Categorias";
+import { useLocation } from "react-router-dom";
 
-const Inicio= () => {
+const HomePage= () => {
     return (<>
-
         <Navegacion />
         <div className="container">
             <div className="row">
@@ -22,5 +22,4 @@ const Inicio= () => {
     </>)
 
 }
-
-export default Inicio
+export default HomePage

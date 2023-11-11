@@ -1,7 +1,6 @@
-import sandwich from "../assets/sandwich.jpg";
-import hamburguesa from "../assets/hamburguesa.jpg";
-import cafe from "../assets/cafe.jpg";
-
+import sandwich from "../../assets/sandwich.jpg";
+import hamburguesa from "../../assets/hamburguesa.jpg";
+import cafe from "../../assets/cafe.jpg";
 function Carrusel() {
   return (
     <>
