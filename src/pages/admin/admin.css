@@ -1,0 +1,27 @@
+.sidebar{
+
+    background-color: black;
+    width: 14rem;
+    height: calc(100vh - 52px);
+    border-right: 1px solid black;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 1rem 2rem;
+}
+.sidebar ul li {
+    margin-bottom: 1rem;
+}
+.sidebar ul li a {
+    text-decoration: none;
+    width: 100%;
+}
+.flex{
+    display: flex;
+}
+
+.content{
+    background-color: rgb(199, 199, 199);
+    width: 100%;
+}

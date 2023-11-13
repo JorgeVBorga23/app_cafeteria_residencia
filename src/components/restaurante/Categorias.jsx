@@ -1,17 +1,10 @@
-import { useEffect, useState } from "react";
+
 import ItemCategoria from "./ItemCategoria";
+import { useCategorias } from "../../customHooks/useCategorias"
 
 function Categorias() {
-  const [categorias, setCategorias] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:3001/categoria")
-      .then((respuesta) => respuesta.json())
-      .then((datos) => {
-        setCategorias(datos);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const {categorias} = useCategorias()
 
   const tarjeta = {
     textDecoration: "none",
