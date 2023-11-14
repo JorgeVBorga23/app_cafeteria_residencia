@@ -1,9 +1,11 @@
 import { redirect } from "react-router-dom";
 import "./restaurante.css";
+import React from 'react';
+import { Card, Button, InputGroup, FormControl, Form } from 'react-bootstrap';
 
 
 function ItemProducto(props) {
-  let url_api = "http://localhost:3001/carrito/guardar";
+ let url_api = "http://localhost:3001/carrito/guardar";
   let añadirProducto = async (url, data) => {
     const response = await fetch(url, {
       method: "POST",
@@ -41,33 +43,29 @@ function ItemProducto(props) {
       });
   };
 
-  return (
-    <>
-      <div className="tarjetaProducto">
-        <h2>{props.nombre}</h2>
-        <h5>Precio: ${props.precio}</h5>
-        <h5>Descripcion: {props.descripcion}</h5>
-        <form onSubmit={handleClick}>
-          <input
-            type="text"
-            value={props.id}
-            hidden
-            disabled
-            name="idProducto"
-          />
-          <label htmlFor="cantidad">Cantidad</label>
-          <input
-            name="cantidad"
+return(
+    <Card style={{ width: '18rem', borderRadius: '15px', margin: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+      <Card.Img variant="top" src="https://via.placeholder.com/150" alt="Producto" style={{ borderRadius: '15px 15px 0 0' }} />
+      <Card.Body>
+        <Card.Title>{props.nombre}</Card.Title>
+        <Card.Text>
+          Precio: ${props.precio}
+        </Card.Text>
+        <InputGroup className="mb-3">
+        <InputGroup.Text id="cantidad">Cantidad</InputGroup.Text>
+          <FormControl
             type="number"
-            required
-            min={1}
-            max={10}
             defaultValue={1}
+            aria-label="Cantidad"
+            aria-describedby="cantidad"
+            style={{ borderRadius: '0 15px 15px 0' }}
           />
-          <input type="submit" value="Añadir al carrito" />
-        </form>
-      </div>
-    </>
-  );
+        </InputGroup>
+        <Button variant="primary" style={{ borderRadius: '15px' }}>
+          Añadir al Carrito
+        </Button>
+      </Card.Body>
+    </Card>
+)
 }
 export default ItemProducto;

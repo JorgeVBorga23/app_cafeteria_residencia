@@ -23,7 +23,7 @@ function Categorias() {
                 <ItemCategoria
                   className="col-1"
                   id={cat.id}
-                  nombre={cat.name}
+                  nombre={cat.nombre}
                 />
               </a>
             );

@@ -1,38 +1,34 @@
-import { useEffect, useState } from "react";
+import { useListaAlimentos } from "../../customHooks/useListaAlimentos"
+import { useCategoria } from "../../customHooks/useCategoria";
 import Navegacion from "./Navegacion";
 import { useParams } from "react-router-dom";
 import ItemProducto from "./ItemProducto"
+import "./restaurante.css"
+
 function DetalleCategoria() {
-    const {id} = useParams()
-    const [productos, setProductos] = useState([])
-    useEffect(()=>{
-        
-            fetch("http://localhost:3001/categoria/lista-productos/"+id)
-              .then((respuesta) => respuesta.json())
-              .then((datos) => {
-                console.log(datos)
-                setProductos(datos);
-              })
-              .catch((err) => console.log(err));
-        
-    },[])
+  const { id } = useParams()
+  const { alimentos } = useListaAlimentos(id)
+  const { categoria } = useCategoria(id)
+
 
   return (
     <>
       <Navegacion />
 
-      <h1>
-        Categoria {id}
-      </h1>
+      <div className="container">
+        <h1 className="text-center">
+          Categoria {categoria.nombre}
+        </h1>
+
+       <div className="grid-alimentos">
+       {alimentos.map(alimento => {
+          return <ItemProducto key={alimento.id} id={alimento.id} nombre={alimento.nombre} precio={alimento.precio}  />
+        })}
+
+       </div>
 
 
-      <p>Aqui van los productos</p>
-
-    {productos.map(prod =>{
-        return <ItemProducto key={prod.id} id={prod.id} nombre={prod.name} precio={prod.price} descripcion={prod.description} />
-    })}
-
-
+      </div>
     </>
   );
 }
