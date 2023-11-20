@@ -1,71 +1,114 @@
-import { redirect } from "react-router-dom";
+
 import "./restaurante.css";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Button, InputGroup, FormControl, Form } from 'react-bootstrap';
 
 
-function ItemProducto(props) {
- let url_api = "http://localhost:3001/carrito/guardar";
-  let añadirProducto = async (url, data) => {
-    const response = await fetch(url, {
-      method: "POST",
-      mode: "cors",
-      cache: "no-cache",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return response.json();
-  };
-  let handleClick = (event) => {
-    event.preventDefault();
-    let cantidad = event.target.cantidad.value;
-    let idProducto = event.target.idProducto.value;
-    let subtotal = props.precio * cantidad;
-    añadirProducto(url_api, {
-      identificador: "prueba1",
-      idProducto: idProducto,
-      cantidad: cantidad,
-      subtotal: subtotal,
-      comentarios: "Ninguno",
-    })
-      .then((response) => {
-        let mensaje = response.mensaje
-        let identificadorUsuario = response.idUsuario
-        localStorage.setItem("idCarrito", identificadorUsuario)
-        alert(mensaje)
-        console.log(response);
-        return redirect("/")
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
-return(
+function ItemProducto({ id, nombre, precio }) {
+
+  const [cantidad, setCantidad] = useState(1)
+  const [agregado, setAgregado] = useState(false)
+
+  useEffect(() => {
+    if (localStorage.getItem("PRODUCTOS_CARRITO")) {
+      const productos_carrito = JSON.parse(localStorage.getItem("PRODUCTOS_CARRITO"))
+      const { items } = productos_carrito.carrito
+      let encontrado = items.find((item) => {
+        return item.id === id
+      })
+      if (encontrado) {
+        setAgregado(true)
+      }
+    }
+  }, [agregado])
+
+
+  const handleCantidad = (event) => {
+    const nuevoValor = parseInt(event.target.value, 10);
+    if (!isNaN(nuevoValor)) {
+      setCantidad(nuevoValor);
+    }
+  }
+
+  let añadirCarrito = () => {
+
+    const ITEM = {
+      id, nombre, precio, cantidad
+    }
+    //verificamos si es el primer item que se agrega
+    if (!localStorage.getItem("PRODUCTOS_CARRITO")) {
+      const carrito = {
+        items: [ITEM],
+        subtotal: ITEM.cantidad * ITEM.precio
+      }
+      localStorage.setItem("PRODUCTOS_CARRITO", JSON.stringify({ "carrito": carrito }))
+      setAgregado(true)
+    } else {
+      //es otro producto
+      //obtenemos el arreglo
+      const carrito_producto = JSON.parse(localStorage.getItem("PRODUCTOS_CARRITO"))
+      const { items } = carrito_producto.carrito
+
+
+      //calcumalos el nuevo subtotal
+      let subtotal = items.reduce((acumulador, objeto) => {
+        return acumulador + objeto.cantidad * objeto.precio
+      }, 0)
+      let subtotalnuevo = subtotal + (ITEM.cantidad * ITEM.precio)
+
+      //agregamos el item al arreglo
+      const carrito_nuevo = {
+        items: [...items, ITEM],
+        subtotal: subtotalnuevo
+      }
+      localStorage.setItem("PRODUCTOS_CARRITO", JSON.stringify({ "carrito": carrito_nuevo }))
+      setAgregado(true)
+    
+    }
+  }
+  return (
     <Card style={{ width: '18rem', borderRadius: '15px', margin: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
       <Card.Img variant="top" src="https://via.placeholder.com/150" alt="Producto" style={{ borderRadius: '15px 15px 0 0' }} />
       <Card.Body>
-        <Card.Title>{props.nombre}</Card.Title>
+        <Card.Title>{nombre}</Card.Title>
         <Card.Text>
-          Precio: ${props.precio}
+          Precio: ${precio}
         </Card.Text>
         <InputGroup className="mb-3">
-        <InputGroup.Text id="cantidad">Cantidad</InputGroup.Text>
+          <InputGroup.Text id="cantidad">Cantidad</InputGroup.Text>
           <FormControl
+            onChange={handleCantidad}
             type="number"
-            defaultValue={1}
+            value={cantidad}
             aria-label="Cantidad"
             aria-describedby="cantidad"
             style={{ borderRadius: '0 15px 15px 0' }}
+            min={1}
           />
         </InputGroup>
-        <Button variant="primary" style={{ borderRadius: '15px' }}>
-          Añadir al Carrito
-        </Button>
+
+
+        {!agregado &&
+          <Button variant="primary" style={{ borderRadius: '15px' }} onClick={() => { añadirCarrito() }} >
+            Añadir al Carrito
+          </Button>
+
+        }
+        {agregado && (
+          <>
+            <Button variant="success" style={{ borderRadius: '15px' }} disabled >
+              Añadido
+            </Button>
+
+            <div className="agregado-button">
+              En el carrito  <i className="fas fa-check"></i>
+            </div>
+          </>
+        )}
+
       </Card.Body>
     </Card>
-)
+  )
 }
 export default ItemProducto;

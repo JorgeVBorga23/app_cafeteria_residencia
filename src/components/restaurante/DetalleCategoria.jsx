@@ -16,7 +16,7 @@ function DetalleCategoria() {
       <Navegacion />
 
       <div className="container">
-        <h1 className="text-center">
+        <h1 className="text-center mt-2 mb-4">
           Categoria {categoria.nombre}
         </h1>
 

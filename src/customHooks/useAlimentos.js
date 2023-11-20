@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 export function useAlimentos(){
     const [alimentos, setAlimentos] = useState([]);
-    const apiUrl = "http://localhost:3000/productos"
+    const apiUrl = "http://localhost:3001/productos"
     useEffect(() => {
       fetch(apiUrl)
         .then((respuesta) => respuesta.json())

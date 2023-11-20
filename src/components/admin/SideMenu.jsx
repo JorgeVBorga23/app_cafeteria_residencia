@@ -2,10 +2,6 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const SideMenu = () => {
   let { state } = useLocation()
-
-
-
-
   return (
     <div className="sidebar">
       <ul>

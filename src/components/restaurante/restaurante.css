@@ -33,3 +33,23 @@
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
 }
+
+
+.agregado-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #28a745; /* Puedes cambiar el color según tus preferencias */
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8em;
+}
+
+@media (max-width: 600px) {
+  .grid-categorias {
+    grid-template-columns: 1fr;
+  }
+}
+
+

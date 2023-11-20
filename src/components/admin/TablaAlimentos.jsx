@@ -6,7 +6,7 @@ const TablaAlimentos = () => {
     //TODO: Paginar alimentos en la tabla y api
     //TODO: Buscador de alimentos
     const { alimentos, setAlimentos } = useAlimentos()
-    const apiUrl = "http://localhost:3000/productos"
+    const apiUrl = "http://localhost:3001/productos"
 
     //modal de notificacion guardado
     const [showModal, setShowModal] = useState(false);
