@@ -6,6 +6,7 @@ import Categorias from "../components/restaurante/Categorias";
 import { useLocation } from "react-router-dom";
 import Carrito from "../components/restaurante/Carrito";
 
+
 const HomePage= () => {
     return (<>
         <Navegacion />
