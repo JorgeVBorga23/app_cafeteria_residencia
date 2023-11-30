@@ -1,7 +1,7 @@
 
 import ItemCategoria from "./ItemCategoria";
 import { useCategorias } from "../../customHooks/useCategorias"
-
+import "./custom.css"
 function Categorias() {
 
   const {categorias} = useCategorias()
@@ -12,11 +12,10 @@ function Categorias() {
   };
   return (
     <>
-      <br />
+      
       <h2 className="text-center">Nuestro Menú</h2>
-      <br />
-      <div className="row">
-        <div className="grid-categorias">
+     
+        <div className="category-list">
           {categorias.map((cat) => {
             return (
               <a key={cat.id} style={tarjeta} href={"/categoria/" + cat.id}>
@@ -24,12 +23,13 @@ function Categorias() {
                   className="col-1"
                   id={cat.id}
                   nombre={cat.nombre}
+                  imagen={cat.imagen}
                 />
               </a>
             );
           })}
         </div>
-      </div>
+      
     </>
   );
 }

@@ -3,7 +3,7 @@
   height: 8rem;
   border: solid 4px;
   border-color: chocolate;
-  border-radius: 50px;
+  border-radius: 20px;
 }
 .tarjetaCategoria:hover{
   background-color: gray;
@@ -17,7 +17,7 @@
 
 .grid-categorias {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr );
   grid-gap: 10px;
 }
 
@@ -31,7 +31,7 @@
 .grid-alimentos {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+  grid-gap: 5px;
 }
 
 
@@ -46,10 +46,41 @@
   font-size: 0.8em;
 }
 
-@media (max-width: 600px) {
-  .grid-categorias {
-    grid-template-columns: 1fr;
-  }
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 400px; /* ajusta según tus necesidades */
 }
 
+.category-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  filter: blur(0); /* No hay difuminado inicial */
+  transition: filter 0.3s ease; /* Añade una transición para suavizar el cambio en hover */
+}
 
+.category-text {
+
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.category-card:hover .category-image {
+  filter: blur(5px); /* Aplica difuminado en hover */
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}

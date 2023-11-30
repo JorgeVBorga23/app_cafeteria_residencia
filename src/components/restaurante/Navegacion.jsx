@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import Carrito from "./Carrito"
+import "./custom.css"
 function Navegacion() {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -13,10 +14,11 @@ function Navegacion() {
   return (
     <>
       {/*Navegacion (debe ser un componente)*/}
-      <nav className="navbar navbar-dark bg-dark">
+      <div class="container-fluid p-0 nav-bar">
+      <nav className="navbar navbar-expand-lg bg-none navbar-dark py-3">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            Cafeteria
+          <a className="navbar-brand px-lg-4 m-0" href="/">
+          <h1 class="m-0 display-4 text-uppercase text-white">Cafeteria</h1>
           </a>
 
 
@@ -56,6 +58,9 @@ function Navegacion() {
         </div>
         
       </nav>
+
+      </div>
+     
     </>
   );
 }

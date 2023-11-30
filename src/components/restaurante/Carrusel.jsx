@@ -1,104 +1,41 @@
-import sandwich from "../../assets/sandwich.jpg";
-import hamburguesa from "../../assets/hamburguesa.jpg";
-import cafe from "../../assets/cafe.jpg";
+import "./custom.css"
+import Carousel from 'react-bootstrap/Carousel';
+import carouseIMG1 from "../../assets/carousel-1.jpg"
+import carouselIMG2 from "../../assets/carousel-2.jpg"
 function Carrusel() {
   return (
     <>
-      <br />
-      <h2 className="text-center">Productos destacados</h2>
-
-      {/*carrusel de productos (debe ser un componente)*/}
-      <div className="container">
-        <div
-          id="carouselExampleCaptions"
-          className="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="0"
-              className="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img src={cafe} className="d-block w-100" alt="primer imagen" />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Primer producto</h5>
-                <p>
-                  Some representative placeholder content for the first slide.
-                </p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                src={hamburguesa}
-                className="d-block w-100"
-                alt="segunda imagen"
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Segundo Producto</h5>
-                <p>
-                  Some representative placeholder content for the second slide.
-                </p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                src={sandwich}
-                className="d-block w-100"
-                alt="tercer imagen"
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Tercer Producto</h5>
-                <p>
-                  Some representative placeholder content for the third slide.
-                </p>
-              </div>
-            </div>
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Anterior</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Siguiente</span>
-          </button>
+     <div className="container-fluid p-0 mb-5">
+     <div id="carouselExample" className="carousel slide  overlay-bottom" data-bs-ride="carousel">
+    <div className="carousel-inner">
+        <div className="carousel-item active">
+            <img src={carouseIMG1}className="d-block w-100" alt="First Slide"/>
+            <div  className="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h2 className="text-primary font-weight-medium m-0" style={{color: "yellow"}}>Servimos el mejor</h2>
+                        <h1 className="display-1 text-white m-0">Café de la ciudad</h1>
+                        <h2 className="text-white m-0">* Desde 1995 *</h2>
+                    </div>
         </div>
-      </div>
+        <div className="carousel-item">
+            <img src={carouselIMG2} className="d-block w-100" alt="Second Slide"/>
+            <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h2 className="text-primary font-weight-medium m-0">Disfruta de nuestro</h2>
+                        <h1 className="display-1 text-white m-0">Menu variado</h1>
+                        <h2 className="text-white m-0">No somos una simple cafeteria </h2>
+                    </div>
+        </div>
+    </div>
+    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Previous</span>
+    </button>
+    <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Next</span>
+    </button>
+</div>
+</div>
+   
     </>
   );
 }

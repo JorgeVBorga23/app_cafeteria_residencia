@@ -25,6 +25,20 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+
+    <style>
+      df-messenger {
+       --df-messenger-bot-message: #878fac;
+       --df-messenger-button-titlebar-color: #df9b56;
+       --df-messenger-chat-background-color: #fafafa;
+       --df-messenger-font-color: white;
+       --df-messenger-send-icon: #878fac;
+       --df-messenger-user-message: #479b3d;
+      }
+    </style>
+
+
   </head>
   <body>
     <div id="root"></div>
@@ -38,9 +52,10 @@
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
     <df-messenger
       intent="welcome"
-      chat-title="cafeteria-residencia"
+      chat-title="Servicio de Pedido Chatbot"
       agent-id="2a8669b4-cb45-45a0-beaa-950f4f749f55"
       language-code="es"
+      
     ></df-messenger>
   </body>
 </html>
