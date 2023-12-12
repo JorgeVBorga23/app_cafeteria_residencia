@@ -69,7 +69,7 @@ function ItemProducto({ id, nombre, precio, imagen }) {
   }
   return (
     <Card style={{ width: '18rem', borderRadius: '15px', margin: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-      <Card.Img variant="top" src={"http://localhost:3001" + imagen} alt="Producto" style={{ borderRadius: '15px 15px 0 0' }} />
+      <Card.Img variant="top" src={"http://recuerdosdeorizaba.ddns.net:3001" + imagen} alt="Producto" style={{ borderRadius: '15px 15px 0 0' }} />
       <Card.Body>
         <Card.Title>{nombre}</Card.Title>
         <Card.Text>

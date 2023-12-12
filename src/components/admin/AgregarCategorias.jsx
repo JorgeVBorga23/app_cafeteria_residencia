@@ -25,7 +25,7 @@ const AgregarCategorias = () => {
 
   const [existeCategoria, setExisteCategoria] = useState(false);
   const { categorias } = useCategorias()
-  const API_URL = "http://localhost:3001/categoria/"
+  const API_URL = "http://recuerdosdeorizaba.ddns.net:3001/categoria/"
 
   const handleCloseAlert = () => {
     setExisteAlimento(false);

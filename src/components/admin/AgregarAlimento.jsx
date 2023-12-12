@@ -25,7 +25,7 @@ const AgregarAlimento = () => {
 
   const [existeAlimento, setExisteAlimento] = useState(false);
   const { categorias } = useCategorias()
-  const API_URL = "http://localhost:3001/productos/"
+  const API_URL = "http://recuerdosdeorizaba.ddns.net:3001/productos/"
 
   const handleCloseAlert = () => {
     setExisteAlimento(false);

@@ -7,7 +7,7 @@ const TablaCategorias = () => {
     //TODO: Paginar alimentos en la tabla y api
     //TODO: Buscador de alimentos
     const { categorias, setCategorias } = useCategorias()
-    const apiUrl = "http://localhost:3001/categorias"
+    const apiUrl = "http://recuerdosdeorizaba.ddns.net:3001/categorias"
 
     //modal de notificacion guardado
     const [showModal, setShowModal] = useState(false);
@@ -56,7 +56,7 @@ const TablaCategorias = () => {
                         {categorias.map((categoria) => (
                             <tr key={categoria.id}>
                                 <td>{categoria.id}</td>
-                                <td><img width={80} height={80} src={"http://localhost:3001" + categoria.imagen} alt={categoria.nombre} /></td>
+                                <td><img width={80} height={80} src={"http://recuerdosdeorizaba.ddns.net:3001" + categoria.imagen} alt={categoria.nombre} /></td>
                                 <td>{categoria.nombre}</td>
                                
                                 <td>

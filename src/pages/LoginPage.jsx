@@ -26,7 +26,7 @@ const Login = () => {
     };
 
     // Realizar la solicitud POST a tu API
-    fetch("http://localhost:3001/usuarios/login", {
+    fetch("http://recuerdosdeorizaba.ddns.net:3001/usuarios/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

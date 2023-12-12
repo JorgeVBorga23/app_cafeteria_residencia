@@ -8,7 +8,7 @@ function App() {
     const delay = 2000;
     const peticionWebhook = async () => {
       //vamos a ver si tenemos un identificador unico 
-      const response = await fetch("http://localhost:3001/webhook/token/", {
+      const response = await fetch("http://recuerdosdeorizaba.ddns.net:3001/webhook/token/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
