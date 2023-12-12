@@ -18,7 +18,7 @@ function Navegacion() {
       <nav className="navbar navbar-expand-lg bg-none navbar-dark py-3">
         <div className="container-fluid">
           <a className="navbar-brand px-lg-4 m-0" href="/">
-          <h1 class="m-0 display-4 text-uppercase text-white">Cafeteria</h1>
+          <h1 class="m-0 display-6 text-uppercase text-white">Recuerdos de Orizaba</h1>
           </a>
 
 

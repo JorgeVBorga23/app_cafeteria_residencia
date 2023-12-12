@@ -13,7 +13,7 @@ export function useCategorias(){
         .catch((err) => console.log(err));
     }, []);
 
-    return {categorias}
+    return {categorias, setCategorias}
   }
 
 

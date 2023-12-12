@@ -1,12 +1,13 @@
 import { React, useState } from 'react';
 import { Table, Button, Modal } from 'react-bootstrap';
-import { useAlimentos } from "../../customHooks/useAlimentos"
-const TablaAlimentos = () => {
+
+import { useCategorias } from '../../customHooks/useCategorias';
+const TablaCategorias = () => {
 
     //TODO: Paginar alimentos en la tabla y api
     //TODO: Buscador de alimentos
-    const { alimentos, setAlimentos } = useAlimentos()
-    const apiUrl = "http://localhost:3001/productos"
+    const { categorias, setCategorias } = useCategorias()
+    const apiUrl = "http://localhost:3001/categorias"
 
     //modal de notificacion guardado
     const [showModal, setShowModal] = useState(false);
@@ -15,13 +16,13 @@ const TablaAlimentos = () => {
         setShowModal(false)
     };
 
-    const handleDelete = (alimentoID) => {
+    const handleDelete = (categoriaId) => {
 
-        //borrar de la base de datos el alimento
+        //borrar de la base de datos el categoria
 
-        //verificamos que se haya podido borrar el alimento
+        //verificamos que se haya podido borrar el categoria
 
-        fetch(apiUrl + "/" + alimentoID, {
+        fetch(apiUrl + "/" + categoriaId, {
             method: "DELETE"
 
         })
@@ -33,7 +34,7 @@ const TablaAlimentos = () => {
             })
             .catch((err) => console.log(err));
 
-        setAlimentos(alimentos.filter((alimento) => alimento.id !== alimentoID));
+        setCategorias(categorias.filter((categoria) => categoria.id !== categoriaId));
 
     };
 
@@ -47,25 +48,19 @@ const TablaAlimentos = () => {
                             <th>ID</th>
                             <th>Imagen</th>
                             <th>Nombre</th>
-                            <th>Categoria</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
-                            <th>Descripción</th>
+                          
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {alimentos.map((alimento) => (
-                            <tr key={alimento.id}>
-                                <td>{alimento.id}</td>
-                                <td><img width={80} height={80} src={"http://localhost:3001" + alimento.imagen} alt={alimento.nombre} /></td>
-                                <td>{alimento.nombre}</td>
-                                <td>{alimento.categoria}</td>
-                                <td>{alimento.precio}</td>
-                                <td>{alimento.stock}</td>
-                                <td>{alimento.descripcion}</td>
+                        {categorias.map((categoria) => (
+                            <tr key={categoria.id}>
+                                <td>{categoria.id}</td>
+                                <td><img width={80} height={80} src={"http://localhost:3001" + categoria.imagen} alt={categoria.nombre} /></td>
+                                <td>{categoria.nombre}</td>
+                               
                                 <td>
-                                    <Button variant="danger" onClick={() => handleDelete(alimento.id)}>
+                                    <Button variant="danger" onClick={() => handleDelete(categoria.id)}>
                                         Eliminar
                                     </Button>
                                     {/* Agrega más botones de acciones según tus necesidades */}
@@ -79,10 +74,10 @@ const TablaAlimentos = () => {
 
             <Modal show={showModal} onHide={handleCloseModal} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title className="text-success">Alimento guardado correctamente!</Modal.Title>
+                    <Modal.Title className="text-success">Categoria eliminada correctamente!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body >
-                    <p>Tu alimento se ha eliminado correctamente en la base de datos.</p>
+                    <p>Tu categoria se ha eliminado correctamente en la base de datos.</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="success" onClick={handleCloseModal}>
@@ -97,4 +92,4 @@ const TablaAlimentos = () => {
 
 }
 
-export default TablaAlimentos
+export default TablaCategorias

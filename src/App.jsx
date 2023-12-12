@@ -20,7 +20,7 @@ function App() {
       fechaExpiracionDia.setTime(fechaExpiracionDia.getTime() + (1 * 24 * 60 * 60 * 1000)); // 1 día en milisegundos
       const cadenaExpiracionDia = `expires=${fechaExpiracionDia.toUTCString()}`;
       document.cookie = `carritoId=${data.token}; ${cadenaExpiracionDia}; path=/`;
-      
+      localStorage.setItem("carritoId", data.token)
     }
 
     const timeoutId = setTimeout(() => {

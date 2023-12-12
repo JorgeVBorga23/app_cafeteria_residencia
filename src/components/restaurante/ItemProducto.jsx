@@ -5,7 +5,7 @@ import { Card, Button, InputGroup, FormControl, Form } from 'react-bootstrap';
 
 
 
-function ItemProducto({ id, nombre, precio }) {
+function ItemProducto({ id, nombre, precio, imagen }) {
 
   const [cantidad, setCantidad] = useState(1)
   const [agregado, setAgregado] = useState(false)
@@ -69,7 +69,7 @@ function ItemProducto({ id, nombre, precio }) {
   }
   return (
     <Card style={{ width: '18rem', borderRadius: '15px', margin: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-      <Card.Img variant="top" src="https://via.placeholder.com/150" alt="Producto" style={{ borderRadius: '15px 15px 0 0' }} />
+      <Card.Img variant="top" src={"http://localhost:3001" + imagen} alt="Producto" style={{ borderRadius: '15px 15px 0 0' }} />
       <Card.Body>
         <Card.Title>{nombre}</Card.Title>
         <Card.Text>

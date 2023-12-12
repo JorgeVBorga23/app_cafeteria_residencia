@@ -11,7 +11,7 @@ function Carrusel() {
         <div className="carousel-item active">
             <img src={carouseIMG1}className="d-block w-100" alt="First Slide"/>
             <div  className="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h2 className="text-primary font-weight-medium m-0" style={{color: "yellow"}}>Servimos el mejor</h2>
+                        <h2 className=" font-weight-medium m-0" style={{color: "#df9b56"}}>Servimos el mejor</h2>
                         <h1 className="display-1 text-white m-0">Café de la ciudad</h1>
                         <h2 className="text-white m-0">* Desde 1995 *</h2>
                     </div>
@@ -19,7 +19,7 @@ function Carrusel() {
         <div className="carousel-item">
             <img src={carouselIMG2} className="d-block w-100" alt="Second Slide"/>
             <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h2 className="text-primary font-weight-medium m-0">Disfruta de nuestro</h2>
+                        <h2 className="font-weight-medium m-0" style={{color: "#df9b56"}} >Disfruta de nuestro</h2>
                         <h1 className="display-1 text-white m-0">Menu variado</h1>
                         <h2 className="text-white m-0">No somos una simple cafeteria </h2>
                     </div>

@@ -31,7 +31,7 @@ function DetalleCategoria() {
        
       <div className="category-list">
           {alimentos.map(alimento => {
-            return <ItemProducto key={alimento.id} id={alimento.id} nombre={alimento.nombre} precio={alimento.precio} />
+            return <ItemProducto key={alimento.id} id={alimento.id} nombre={alimento.nombre} precio={alimento.precio} imagen={alimento.imagen} />
           })}
         </div>
 

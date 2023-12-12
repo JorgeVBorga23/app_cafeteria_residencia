@@ -17,6 +17,9 @@ const SideMenu = () => {
         <li>
           <Link to="/admin/usuarios" state={state}><button className="btn btn-primary">Usuarios</button></Link>
         </li>
+        <li>
+          <Link to="/admin/categorias" state={state}><button className="btn btn-primary">Categorias</button></Link>
+        </li>
       </ul>
 
     </div>
